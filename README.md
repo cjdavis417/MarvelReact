@@ -1,5 +1,6 @@
 # Marvel React
-## This is a project for [Code Louisville](https://www.codelouisville.org) classes.
+## This is a project for [Code Louisville](https://www.codelouisville.org) Javascript-React class.
+
 #### This website is a bunch of Marvel characters and different things written in React.
 
 #### Please note, this is work in progress.
