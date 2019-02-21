@@ -8,7 +8,9 @@ import '../stylesheets/bootstrap-reboot.css';
 import '../App.css';
 
 import Nav from './Nav';
-import Home from './Home';
+import Splash from './Splash';
+import Avengers from './Avengers';
+import Villians from './Villians';
 
 class App extends Component {
   render() {
@@ -16,7 +18,9 @@ class App extends Component {
       <HashRouter>
         <div>
           <Nav />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Splash} />
+            <Route path="/avengers" component={Avengers} />
+            <Route path="/villians" component={Villians} />
         </div>
       </HashRouter>
 
