@@ -1,42 +1,101 @@
 import React, {Component} from 'react';
+import $ from 'jquery';
 
-const AvengerTeam = [
-    {id: 1, name: "Captain America"},
-    {id: 2, name: "Iron Man"},
-    {id: 3, name: "Hulk"},
-    {id: 4, name: "Thor"},
-    {id: 5, name: "Black Widow"}
-];
+class Avenger {
+    constructor(id, name, color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+    }
+}
 
-const members = AvengerTeam.map((item, key) =>
-<li key={item.id}>{item.name}</li>
-);
+
+var Avenger1 = new Avenger('Avenger1', 'Avenger', 'ff0000');
+var IronMan = new Avenger('IronMan', 'Iron Man', '4b0082');
+var CaptAmerica = new Avenger('CaptAmerica', 'Captain America', 'yellow');
+var Thor = new Avenger('Thor', 'Thor', 'blue');
+var Hulk = new Avenger('Hulk', 'Hulk', 'purple');
+var SpiderMan = new Avenger('SpiderMan', 'Spider-Man', 'yellow');
+var IronPatriot = new Avenger('IronPatriot', 'Iron Patriot (James Rhodes)', 'purple');
+var Vision = new Avenger('Vision', 'Vision', 'purple');
+var HankPym = new Avenger('HankPym', 'Hank Pym', 'purple');
+var Daredevil = new Avenger('Dardevil', 'Daredevil', 'black');
+var Deadpool = new Avenger('Deadpool', 'Deadpool', 'teal');
+var BlackPanther = new Avenger('BlackPanther', 'Black Panther', 'blue');
+var BlackWidow = new Avenger('BlackWidow', 'Black Widow', 'teal');
+
+var avengers = [Avenger1, IronMan, CaptAmerica, Thor, Hulk, SpiderMan, IronPatriot, Vision, HankPym, Daredevil, Deadpool, BlackPanther, BlackWidow];
 
 var marvelAPI = 'https://gateway.marvel.com/v1/public/characters';
+var APIkey = '509dae0442a04443238ccd706605db14';
+var hash = '5bcfc1939107267c15cc5d863348fffd';
 
-$.getJSON(marvelAPI, {
-    name: avengers[z].name,
-    limit: 100,
-    apikey: '',
-    hash: ''
-})
-.done(function(response) {
-
-})
+var FinalAvenger = [];
+var finalString = [];
 
 const Avengers = () => {
-    return (
-        //<h2>Avengers</h2>
-        <div>
-            <h3>Members:</h3>
-            <ul>{members}</ul>
-        </div>
-        
+    for (var z = 0; z < avengers.length; z++) {
+        $.getJSON(marvelAPI, {
+            name: avengers[z].name,
+            limit: 100,
+            ts: '1',
+            apikey: APIkey,
+            hash: hash
+        })
+        .done(function(response) {
+            var results = response.data.results;
+            var resultsLen = results.length;
+            var output = '';
 
+            for(var i = 0; i < resultsLen; i++) {
+                
+                var img = results[0].thumbnail.path + '.jpg';
+                var name = results[0].name;
+                var description = results[0].description;
+
+                // var cardHover = "card:hover {box-shadow: 0 0 15px " + results[0].color + "}";
+                // var imgpath = results[0].thumbnail.path + '.' + results[0].thumbnail.extension;
+                
+                // output += '<div class="card border-secondary p-3" style="width: 18rem;" id="' + avengers[0].id + '">';
+                // output += '<div class="card-header">' + results[0].name + '</div>';
+                // output += '<img src="' + imgpath + '" class="card-img-top" alt="' + results[0].name + '">';
+                // output += '<div class="card-body">';
+                // output += '<div class="card-text">' + results[0].description +'</div>';
+                // output += '</div></div>';
+            }
+
+            FinalAvenger.push({
+                img: img, 
+                name: name,
+                description: description
+            });
+            console.log(FinalAvenger);
+
+        });
+    };
+
+    finalString = FinalAvenger.map((member) =>
+        <div className = 'card border-secondary p-3' style={cardStyle}>
+            <div className = 'card-header'>{member.name}</div>
+            <img src = {member.img} className="card-img-top" alt={member.name} />
+            <div className = 'card-body'>
+                <div className = 'card-text'>{member.description}</div>
+            </div>
+        </div>
+    )
+
+    return (
+        <div>{ finalString }</div>
+        
     );
 };
 
 export default Avengers;
+
+const cardStyle = {
+    width: '18rem'
+}
+
 
 
 

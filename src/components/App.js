@@ -6,6 +6,7 @@ import '../stylesheets/bootstrap-grid.css';
 import '../stylesheets/bootstrap-reboot.css';
 
 import '../App.css';
+import '../index.css';
 
 import Nav from './Nav';
 import Splash from './Splash';
