@@ -53,15 +53,6 @@ const Avengers = () => {
                 var name = results[0].name;
                 var description = results[0].description;
 
-                // var cardHover = "card:hover {box-shadow: 0 0 15px " + results[0].color + "}";
-                // var imgpath = results[0].thumbnail.path + '.' + results[0].thumbnail.extension;
-                
-                // output += '<div class="card border-secondary p-3" style="width: 18rem;" id="' + avengers[0].id + '">';
-                // output += '<div class="card-header">' + results[0].name + '</div>';
-                // output += '<img src="' + imgpath + '" class="card-img-top" alt="' + results[0].name + '">';
-                // output += '<div class="card-body">';
-                // output += '<div class="card-text">' + results[0].description +'</div>';
-                // output += '</div></div>';
             }
 
             FinalAvenger.push({
