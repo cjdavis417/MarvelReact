@@ -1,28 +1,20 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+const MarvelChar = require('./MarvelChar.js').default;
 
-class Avenger {
-    constructor(id, name, color) {
-        this.id = id;
-        this.name = name;
-        this.color = color;
-    }
-}
-
-
-var Avenger1 = new Avenger('Avenger1', 'Avenger', 'ff0000');
-var IronMan = new Avenger('IronMan', 'Iron Man', '4b0082');
-var CaptAmerica = new Avenger('CaptAmerica', 'Captain America', 'yellow');
-var Thor = new Avenger('Thor', 'Thor', 'blue');
-var Hulk = new Avenger('Hulk', 'Hulk', 'purple');
-var SpiderMan = new Avenger('SpiderMan', 'Spider-Man', 'yellow');
-var IronPatriot = new Avenger('IronPatriot', 'Iron Patriot (James Rhodes)', 'purple');
-var Vision = new Avenger('Vision', 'Vision', 'purple');
-var HankPym = new Avenger('HankPym', 'Hank Pym', 'purple');
-var Daredevil = new Avenger('Dardevil', 'Daredevil', 'black');
-var Deadpool = new Avenger('Deadpool', 'Deadpool', 'teal');
-var BlackPanther = new Avenger('BlackPanther', 'Black Panther', 'blue');
-var BlackWidow = new Avenger('BlackWidow', 'Black Widow', 'teal');
+var Avenger1 = new MarvelChar('Avenger1', 'Avenger', 'ff0000');
+var IronMan = new MarvelChar('IronMan', 'Iron Man', '4b0082');
+var CaptAmerica = new MarvelChar('CaptAmerica', 'Captain America', 'yellow');
+var Thor = new MarvelChar('Thor', 'Thor', 'blue');
+var Hulk = new MarvelChar('Hulk', 'Hulk', 'purple');
+var SpiderMan = new MarvelChar('SpiderMan', 'Spider-Man', 'yellow');
+var IronPatriot = new MarvelChar('IronPatriot', 'Iron Patriot (James Rhodes)', 'purple');
+var Vision = new MarvelChar('Vision', 'Vision', 'purple');
+var HankPym = new MarvelChar('HankPym', 'Hank Pym', 'purple');
+var Daredevil = new MarvelChar('Dardevil', 'Daredevil', 'black');
+var Deadpool = new MarvelChar('Deadpool', 'Deadpool', 'teal');
+var BlackPanther = new MarvelChar('BlackPanther', 'Black Panther', 'blue');
+var BlackWidow = new MarvelChar('BlackWidow', 'Black Widow', 'teal');
 
 var avengers = [Avenger1, IronMan, CaptAmerica, Thor, Hulk, SpiderMan, IronPatriot, Vision, HankPym, Daredevil, Deadpool, BlackPanther, BlackWidow];
 
@@ -45,7 +37,6 @@ const Avengers = () => {
         .done(function(response) {
             var results = response.data.results;
             var resultsLen = results.length;
-            var output = '';
 
             for(var i = 0; i < resultsLen; i++) {
                 
