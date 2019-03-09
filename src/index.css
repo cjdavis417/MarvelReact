@@ -1,5 +1,5 @@
 body {
-  background: #222;
+  background: #efefef;
 }
 
 .title {
@@ -91,5 +91,10 @@ img {
   padding: 10px 0 10px 0;
   width: 100%;
 
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
 }
 
