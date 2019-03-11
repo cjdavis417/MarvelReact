@@ -1,4 +1,10 @@
 import React, {Component} from 'react';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+
 import $ from 'jquery';
 import MarvelChar from './MarvelChar';
 
@@ -38,12 +44,20 @@ const Avengers = () => {
             var results = response.data.results;
             var resultsLen = results.length;
 
-            for(var i = 0; i < resultsLen; i++) {
-                
-                var img = results[0].thumbnail.path + '.jpg';
-                var name = results[0].name;
-                var description = results[0].description;
-            }
+            var img =" ";
+            var name = "";
+            var description = "";
+
+            results.forEach(element => {
+                img = element.thumbnail.path + '.jpg';
+                name = element.name;
+            
+                if (element.description.length > 0) {
+                    description = element.description;
+                } else {
+                    description = "API is blank."
+                }
+            });
 
             FinalAvengers.push({
                 img: img, 
@@ -56,13 +70,19 @@ const Avengers = () => {
     };
 
     finalString = FinalAvengers.map((member) =>
-        <div className = 'card border-secondary p-3 cardStyle'>
-            <div className = 'card-header'>{member.name}</div>
-            <img src = {member.img} className="card-img-top" alt={member.name} />
-            <div className = 'card-body'>
-                <div className = 'card-text'>{member.description}</div>
-            </div>
-        </div>
+        <Card style={cardStyle}>
+            <CardActionArea>
+                <CardMedia 
+                    component="img"
+                    image={member.img}
+                    title={member.name}
+                />
+            </CardActionArea>
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">{member.name}</Typography>
+                <Typography component="p">{member.description}</Typography>
+            </CardContent>
+        </Card>
     )
 
     return (
@@ -73,10 +93,9 @@ const Avengers = () => {
 
 export default Avengers;
 
-
-
-
-
+const cardStyle = {
+    width: '18rem'
+}
 
 
 
