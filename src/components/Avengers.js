@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import $ from 'jquery';
 import MarvelChar from './MarvelChar';
 
-var Avenger1 = new MarvelChar('Avenger1', 'Avenger', 'ff0000');
+var Avenger1 = new MarvelChar('Avenger1', 'Avengers', 'ff0000');
 var IronMan = new MarvelChar('IronMan', 'Iron Man', '4b0082');
 var CaptAmerica = new MarvelChar('CaptAmerica', 'Captain America', 'yellow');
 var Thor = new MarvelChar('Thor', 'Thor', 'blue');
@@ -42,20 +42,19 @@ const Avengers = () => {
         })
         .done(function(response) {
             var results = response.data.results;
-            var resultsLen = results.length;
 
             var img =" ";
             var name = "";
             var description = "";
 
             results.forEach(element => {
-                img = element.thumbnail.path + '.jpg';
+                img = element.thumbnail.path + '.' + element.thumbnail.extension;
                 name = element.name;
             
                 if (element.description.length > 0) {
                     description = element.description;
                 } else {
-                    description = "API is blank."
+                    description = "Character description in API is blank."
                 }
             });
 
