@@ -7,13 +7,18 @@ import Typography from '@material-ui/core/Typography';
 
 import $ from 'jquery';
 import MarvelChar from './MarvelChar';
+import API from './API';
 import { createEnumMember } from 'typescript';
 
 
 var Ultron = new MarvelChar('Ultron', 'Ultron', 'blue');
 var Loki = new MarvelChar('Loki', 'Loki', 'blue');
+const Thanos = new MarvelChar('Thanos', 'Thanos', 'blue');
+const Redskull = new MarvelChar('Red Skull', 'Red Skull', 'red');
+const Kree = new MarvelChar('Kree', 'Kree', 'blue');
+const Galactus = new MarvelChar('Galactus', 'Galactus', 'blue');
 
-var GroupVillians = [Ultron, Loki];
+const GroupVillians = [Ultron, Loki, Thanos, Redskull, Kree, Galactus];
 
 var marvelAPI = 'https://gateway.marvel.com/v1/public/characters';
 var APIkey = '509dae0442a04443238ccd706605db14';
@@ -35,12 +40,20 @@ const Villians = () => {
             var results = response.data.results;
             var resultsLen = results.length;
 
-            for(var i = 0; i < resultsLen; i++) {
-                    
-                var img = results[0].thumbnail.path + '.jpg';
-                var name = results[0].name;
-                var description = results[0].description;
-            }
+            var img = "";
+            var name = "";
+            var description = "";
+
+            results.forEach(element => {
+                img = element.thumbnail.path + '.' + element.thumbnail.extension;
+                name = element.name;
+
+                if (element.description.length > 0) {
+                    description = element.description;
+                } else {
+                    description = "Character description in API is blank"
+                }
+            })
 
             FinalVillians.push({
                 img: img, 
