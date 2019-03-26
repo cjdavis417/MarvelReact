@@ -31,54 +31,38 @@ class MarvelChar extends Component {
             apikey: APIkey,
             hash: hash
         });
-        console.log(json)
-            var results = json.data.results;
-
-            var img ="";
-            var name = "";
-            var description = "";
-
-            results.forEach(element => {
-                img = element.thumbnail.path + '.' + element.thumbnail.extension;
-                name = element.name;
-            
-                if (element.description.length > 0) {
-                    description = element.description;
-                } else {
-                    description = "Character description in API is blank."
-                }
-            });
-
-            FinalAvengers.push({
-                img: img, 
-                name: name,
-                description: description
-            });
-            console.log(FinalAvengers);
-
-            finalString = FinalAvengers.map((member) =>
         
-            
-                <Card style={cardStyle}>
-                    <CardActionArea>
-                        <CardMedia 
-                            component="img"
-                            image={member.img}
-                            title={member.name}
-                        />
-                    </CardActionArea>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">{member.name}</Typography>
-                        <Typography component="p">{member.description}</Typography>
-                    </CardContent>
-                </Card>
-        
-        )
-        console.log('finalstring', finalString);
-
-        return (
-            <div className="container">{finalString}</div>
-        );
+        Promise.all([json]).then(results => {
+            var charArray = []
+            charArray.push({
+                id: results[0].data.results[0].id,
+                name: results[0].data.results[0].name,
+                desc: results[0].data.results[0].description,
+                path: results[0].data.results[0].thumbnail.path,
+                extension: results[0].data.results[0].thumbnail.extension
+                })
+                var imagePath = charArray[0].path + '.' + charArray[0].extension 
+                finalString = charArray.map((member) => //FinalAvengers.map((member) =>
+                    <Card style={cardStyle} key={member.id}>
+                        <CardActionArea>
+                            <CardMedia 
+                                component="img"
+                                image={imagePath}
+                                title={member.name}
+                            />
+                        </CardActionArea>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">{member.name}</Typography>
+                            <Typography component="p">{member.desc}</Typography>
+                        </CardContent>
+                    </Card>
+                )
+                console.log('finalString: ',finalString)
+            return (
+                finalString
+            )
+                
+        });
     }
 }
 
