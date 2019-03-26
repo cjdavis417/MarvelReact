@@ -22,11 +22,15 @@ class Villians extends Component {
 
         let villians2 = GroupVillians.map((element) => 
             element.GetCharacter(element.name)
-        ).then(moreData => console.log('moreData: ', moreData))
-        console.log('villians2: ', villians2)
-        this.setState({
-            villians: villians2
-        });
+        )
+
+        Promise.all([villians2]).then(moreData => {
+            this.setState({
+                villians: moreData
+            })
+        })
+        //console.log('villians2: ', villians2)
+       
     }
 
     componentDidMount() {
@@ -34,7 +38,7 @@ class Villians extends Component {
     }
 
     render() {
-        Promise.all(console.log('state: ', this.state.villians))
+        console.log('state: ', this.state.villians)
         const villReturn = this.state.villians.map(element => 
             element
         )
