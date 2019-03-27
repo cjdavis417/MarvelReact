@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MarvelChar from './MarvelChar';
 
 const Ultron = new MarvelChar('Ultron', 'Ultron');
-const Loki = new MarvelChar('Loki', 'Loki', 'blue');
+const Loki = new MarvelChar('Loki', 'Loki');
 const Thanos = new MarvelChar('Thanos', 'Thanos');
 const Redskull = new MarvelChar('Red Skull', 'Red Skull');
 const Kree = new MarvelChar('Kree', 'Kree');
@@ -18,19 +18,17 @@ class Villians extends Component {
         }
     }
 
-    GetCharacter() {
+    async GetCharacter() {
 
-        let villians2 = GroupVillians.map((element) => 
-            element.GetCharacter(element.name)
+        let villians2 = GroupVillians.map((element) =>
+            element.GetCharacter()
         )
 
-        Promise.all([villians2]).then(moreData => {
+        Promise.all(villians2).then(moreData => {
             this.setState({
                 villians: moreData
             })
         })
-        //console.log('villians2: ', villians2)
-       
     }
 
     componentDidMount() {
@@ -38,10 +36,11 @@ class Villians extends Component {
     }
 
     render() {
-        console.log('state: ', this.state.villians)
+    
         const villReturn = this.state.villians.map(element => 
             element
         )
+        
         return (
             <div>{villReturn}</div>
         )
@@ -50,7 +49,3 @@ class Villians extends Component {
 }
 
 export default Villians;
-
-const cardStyle = {
-    width: '18rem'
-}

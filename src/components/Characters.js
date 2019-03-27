@@ -1,27 +1,35 @@
 import React, {Component} from 'react';
-import MarvelChar from './MarvelChar';
+import Grid from '@material-ui/core/Grid';
+import { flexbox } from '@material-ui/system';
+
+//import MarvelChar from './MarvelChar';
 import Villians from './Villians';
 import Avengers from './Avengers';
+//import classes from '*.module.css';
 
 class Characters extends Component {
 
     render() {
         return (
             <div>
-                <div>
+                
                     <h1>Heroes</h1>
+                    
                     <Avengers />
-                </div>
-                <div>
+                    
+                    
+              <hr />
                     <h1>Villians</h1>
+                   
                     <Villians />
-                </div>
-            </div>
+                    
+           </div>
         );
     }
 }
 
 export default Characters;
+
 
 
 

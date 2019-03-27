@@ -44,3 +44,13 @@
 .cardStyle {
   width: 18rem;
 }
+
+.matPaper {
+  margin: 5px;
+  color: blue;
+  
+}
+
+.gridRoot {
+  flex-grow: 1;
+}

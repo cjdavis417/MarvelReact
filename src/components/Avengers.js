@@ -1,37 +1,55 @@
 import React, {Component} from 'react';
 import MarvelChar from './MarvelChar';
-import { element } from 'prop-types';
 
-var Hulk = new MarvelChar('Hulk', 'Hulk');
+
+
+const IronMan = new MarvelChar('IronMan', 'Iron Man');
+const CaptAmerica = new MarvelChar('CaptAmerica', 'Captain America');
+const Thor = new MarvelChar('Thor', 'Thor');
+const Hulk = new MarvelChar('Hulk', 'Hulk');
+const SpiderMan = new MarvelChar('SpiderMan', 'Spider-Man');
+const IronPatriot = new MarvelChar('IronPatriot', 'Iron Patriot (James Rhodes)');
+const Vision = new MarvelChar('Vision', 'Vision');
+const HankPym = new MarvelChar('HankPym', 'Hank Pym');
+const Daredevil = new MarvelChar('Dardevil', 'Daredevil');
+const Deadpool = new MarvelChar('Deadpool', 'Deadpool');
+const BlackPanther = new MarvelChar('BlackPanther', 'Black Panther');
+const BlackWidow = new MarvelChar('BlackWidow', 'Black Widow');
+
+const GroupAvengers = [IronMan, CaptAmerica, Thor, Hulk, SpiderMan, IronPatriot, Vision, HankPym, Daredevil, Deadpool, BlackPanther, BlackWidow];
 
 class Avengers extends Component {
     constructor() {
         super()
         this.state = {
-            hulk: ''
+            avengers: []
         }
     }
 
     async GetCharacter() {
-        let hulk2 = await Hulk.GetCharacter(Hulk.name);
-        console.log('hulk2: ', hulk2)
-        this.setState({
-            hulk: hulk2
-            //() => console.log('heroes: ',this.state))
-        })
-    };
+        let avengers2 = GroupAvengers.map((element) => 
+            element.GetCharacter()
+        ) 
+        
+        Promise.all(avengers2).then(moreData => {
+            this.setState({
+            avengers: moreData
+            })
+        });
+    }
 
     componentDidMount() {
         this.GetCharacter();
-        
     }
 
     render() {
+        const avengReturn = this.state.avengers.map(element =>
+            element
+            )
         return (
-            <div>
-            <div>{this.state.hulk}</div>
-            </div>
-        );
+            <div>{avengReturn}</div>
+        )
+
     }
 }
 
