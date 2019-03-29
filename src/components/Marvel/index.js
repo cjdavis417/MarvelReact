@@ -8,8 +8,8 @@ class Index extends Component {
     render() {
         return (
             <div className='wrapper'>    
-                <Avengers className='container' />
-                <Villians className='container' /> 
+                <Avengers className='card-container' />
+                <Villians className='card-container' /> 
             </div>
         );
     }

@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
+
+// Material-UI imports
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
 
 class MarvelChar extends Component {
@@ -53,24 +56,22 @@ class MarvelChar extends Component {
         
 
         finalString = charArray.map((member) => 
-        <div>
-            {/* <GridListTile key={imagePath} className='tile'>
-                <img src={imagePath} alt={member.name} />
-                <GridListTileBar
-                title={member.name}
-                subtitle={<span>ID: {member.id}</span>}
-                actionIcon={
-                    <IconButton className=''>
-                    	<SvgIcon >
-                        <path d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm4-9.99L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-                        </SvgIcon>			
-                    </IconButton>
-                    
-                }/>
-                
-                	
-            </GridListTile> */}
-
+            <div  className='card'>
+                <Card key={imagePath}>
+                    <CardActionArea>
+                        <CardMedia 
+                        component="img"
+                            image={imagePath}
+                            title={member.name}
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {member.name}
+                                </Typography>
+                                <Typography component="p">{member.desc}</Typography>
+                            </CardContent>
+                    </CardActionArea>
+                </Card>
             </div>
         )
         
