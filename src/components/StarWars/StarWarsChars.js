@@ -20,12 +20,13 @@ class StarWarsChars extends Component {
 
     async getAPI() {
         let people = [];
-        // API ID's for the films are 1 through 7.  loops over to get infor for each movie.
-        for(var i = 1; i<17; i++) {
+        // API ID's for characters with id of 1 through 17.  loops over to get info for each character.
+        for(var i = 1; i < 17; i++) {
             await fetch('https://swapi.co/api/people/' + i + '/')
             .then(response => response.json())
             .then(data => people.push({data}))
 
+            // needs to be in promise since data fetching is asyncronus
             Promise.all(people).then(moreData => {
                 this.setState({
                     people: moreData
@@ -53,21 +54,18 @@ class StarWarsChars extends Component {
         const finalArr = this.state.people.map(element => 
                 element
             )
-        const filmElement = finalArr.map(element => 
-            // Material-UI elements  
-            
-                <Card className='card' >
-                    <CardContent>
-                        <Typography variant='h4'>{element.data.name}</Typography>
-                        <Typography variant='h5'>Gender: {element.data.gender}</Typography>
-                        <Typography variant='p'>Height: {this.getHeight(element.data.height)} feet</Typography>
-                    </CardContent>
-                </Card>
-          
+        const filmElement = finalArr.map(element =>  
+            <Card className='card' >
+                <CardContent>
+                    <Typography variant='h4'>{element.data.name}</Typography>
+                    <Typography variant='h5'>Gender: {element.data.gender}</Typography>
+                    <Typography variant='p'>Height: {this.getHeight(element.data.height)} feet</Typography>
+                </CardContent>
+            </Card>
         )
             
         return (
-            // Read a doc that React.Fragment or Fragment is 'best practices'
+            // Read a doc that React.Fragment or Fragment is 'best practices'.  trying it out.
             <React.Fragment>
                 <Typography variant='h3'>Characters</Typography>
                 {filmElement}
@@ -75,7 +73,6 @@ class StarWarsChars extends Component {
         )
         
     }
-
 
 }
 

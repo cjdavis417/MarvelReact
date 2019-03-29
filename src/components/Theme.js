@@ -1,6 +1,6 @@
 // Material-UI theme file
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export default createMuiTheme({
     root: {
@@ -14,7 +14,7 @@ export default createMuiTheme({
           main: '#ff784e'
         },
       },
-      overrides: {
+      overrides: { // couldn't figure out how to get this to work.
         MuiDrawer: {
           background: '#f00',
         }

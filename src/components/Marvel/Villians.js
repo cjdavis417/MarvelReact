@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import MarvelChar from './MarvelChar';
 
+// Material-UI imports
 import {Typography} from '@material-ui/core'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+// Character Objects
 const Ultron = new MarvelChar('Ultron', 'Ultron');
 const Loki = new MarvelChar('Loki', 'Loki');
 const Thanos = new MarvelChar('Thanos', 'Thanos');
@@ -17,18 +19,17 @@ class Villians extends Component {
     constructor() {
         super()
         this.state = {
-            loading: false,
-            villians: [],
-            comics: []
+            loading: false, // used to help determine spinner 
+            villians: []
         }
     }
 
+    // gets data from object function and maps to new array.  then sets state with the data.
     async GetCharacter() {
-
         let villians2 = GroupVillians.map((element) =>
             element.GetCharacter()
         )
-
+        // must be in promise since data fetching is async
         Promise.all(villians2).then(moreData => {
             this.setState({
                 loading: false,
@@ -37,21 +38,18 @@ class Villians extends Component {
         })
     }
 
-    
-    
-
     componentDidMount() {
         this.setState({loading: true})
         this.GetCharacter();
-        
     }
 
     render() {
-    
+        // mapped to new array to make things simpler in return statement
         const villReturn = this.state.villians.map(element => 
             element
         )
         
+        // used to deteremine loading state
         if(this.state.loading) {
             return (
                 <CircularProgress className='progress' color='secondary' />

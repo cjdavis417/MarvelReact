@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Route, HashRouter } from 'react-router-dom';
 
+// CSS imports
 import '../App.css';
 import '../index.css';
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+// Material-UI imports
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from './Theme';
 import ButtonAppBar from './ButtonAppBar';
 import Characters from './Characters';
-import Villians from './Marvel/Villians';
 import Marvel from './Marvel/index';
 import StarWars from './StarWars/index';
 import About from './About';
@@ -28,9 +29,7 @@ class App extends Component {
             <Route path="/about" component={About} />
           </React.Fragment>
         </HashRouter>
-        
         <Footer />
-      
     </MuiThemeProvider>
      
     );

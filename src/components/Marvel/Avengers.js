@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 import MarvelChar from './MarvelChar';
 
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import ListSubheader from '@material-ui/core/ListSubheader';
+// Material-UI imports
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Typography } from '@material-ui/core';
 
-//import classes from '*.module.css';
-
-
-
+// character objects
 const IronMan = new MarvelChar('IronMan', 'Iron Man');
 const CaptAmerica = new MarvelChar('CaptAmerica', 'Captain America');
 const Thor = new MarvelChar('Thor', 'Thor');
@@ -30,16 +25,17 @@ class Avengers extends Component {
     constructor() {
         super()
         this.state = {
-            loading: false,
+            loading: false, // used to help determine spinner
             avengers: []
         }
     }
 
+    // gets data from object function and maps to new array.  then sets state with the data.
     async GetCharacter() {
         let avengers2 = GroupAvengers.map((element) => 
             element.GetCharacter()
         ) 
-        
+        // must be in promise since data fetching is async
         Promise.all(avengers2).then(moreData => {
             this.setState({
                 loading: false,
@@ -50,15 +46,16 @@ class Avengers extends Component {
 
     componentDidMount() {
         this.setState({loading: true})
-        this.GetCharacter();
-        
+        this.GetCharacter();  
     }
 
     render() {
+        // mapped state to a new array to make things simpler in the return statement.
         const avengReturn = this.state.avengers.map(element =>
             element
             )
-
+        
+        // used to determine load state
         if(this.state.loading) {
             return (
                 <CircularProgress className='progress' color='primary' />

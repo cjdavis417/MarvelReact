@@ -1,3 +1,5 @@
+// This is the class that gathers the data from the Marvel API
+
 import React, {Component} from 'react';
 import $ from 'jquery';
 
@@ -10,24 +12,17 @@ import Typography from '@material-ui/core/Typography';
 
 
 class MarvelChar extends Component {
-    constructor(id, name, shColor) {
+    constructor(id, name) {
         super()
         this.id = id;
-        this.name = name;
+        this.name = name; // remnents of future stuff
 
-        this.state = {
-            open: false
-        };
-    }
-
-    openModal = (e) => {
-        e.preventDefault();
-        this.modal.open();
     }
 
     async GetCharacter() {
         var finalString = [];
 
+        // Marvel API stuff using jquery
         var marvelAPI = 'https://gateway.marvel.com/v1/public/characters';
         var APIkey = '509dae0442a04443238ccd706605db14';
         var hash = '5bcfc1939107267c15cc5d863348fffd';
@@ -51,10 +46,8 @@ class MarvelChar extends Component {
                 extension: results.thumbnail.extension
             })
         
-        
         var imagePath = charArray[0].path + '.' + charArray[0].extension 
         
-
         finalString = charArray.map((member) => 
             <div  className='card'>
                 <Card key={imagePath}>
@@ -82,11 +75,6 @@ class MarvelChar extends Component {
         
     }
 
-    async GetComics() {
-        console.log('comics func');
-
-        
-    }
 }
 
 export default MarvelChar;
