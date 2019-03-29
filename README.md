@@ -5,10 +5,6 @@
 
 #### Please note, this is work in progress.
 
-#### Three API Calls:
-#### components/Marvel/MarvelChar.js
-#### componenets/StarWars/StarWars.js
-#### componenets/StarWars/StarWarsChars.js
 
 1. Technologies used:
     * **HTML5**
@@ -19,3 +15,8 @@
     * **JQuery-3.3.1**
     * **Marvel API**
     * **Star Wars API**
+
+2. Three API Calls:
+* **components/Marvel/MarvelChar.js**
+* **componenets/StarWars/StarWars.js**
+* **componenets/StarWars/StarWarsChars.js**
