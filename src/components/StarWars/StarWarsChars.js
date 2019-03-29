@@ -11,7 +11,7 @@ class StarWarsChars extends Component {
     constructor (id) {
         super()
         this.id = id
-        this.films = [] // keeps state of films
+        this.people = [] // keeps state of films
         this.state = {
             detailes: []
         }
@@ -19,16 +19,16 @@ class StarWarsChars extends Component {
     }
 
     async getAPI() {
-        let films = [];
+        let people = [];
         // API ID's for the films are 1 through 7.  loops over to get infor for each movie.
-        for(var i = 1; i<8; i++) {
+        for(var i = 1; i<17; i++) {
             await fetch('https://swapi.co/api/people/' + i + '/')
             .then(response => response.json())
-            .then(data => films.push({data}))
+            .then(data => people.push({data}))
 
-            Promise.all(films).then(moreData => {
+            Promise.all(people).then(moreData => {
                 this.setState({
-                    films: moreData
+                    people: moreData
                 })
             })
         }
@@ -46,11 +46,11 @@ class StarWarsChars extends Component {
 
     render() {
         // this waits for the api to finish getting data.
-        if (!this.state.films) {
+        if (!this.state.people) {
             return (<CircularProgress className='progress' color='primary' />)
         }
         
-        const finalArr = this.state.films.map(element => 
+        const finalArr = this.state.people.map(element => 
                 element
             )
         const filmElement = finalArr.map(element => 

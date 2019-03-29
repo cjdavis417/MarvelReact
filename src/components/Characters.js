@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 //import MarvelChar from './MarvelChar';
-import Villians from './Villians';
-import Avengers from './Avengers';
-import StarWars from './StarWars';
-import StarWarsChars from './StarWarsChars';
+import Villians from './Marvel/Villians';
+import Avengers from './Marvel/Avengers';
+import StarWars from './StarWars/StarWars';
+import StarWarsChars from './StarWars/StarWarsChars';
 //import classes from '*.module.css';
 
 class Characters extends Component {

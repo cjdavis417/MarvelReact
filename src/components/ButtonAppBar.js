@@ -35,8 +35,8 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             <Link to="" className="navLink"><span sytle='font-weight: bold;'>Sci-Fi</span> Characters</Link>
           </Typography>
-          <Button color="inherit"><Link to="/avengers" className="navLink">Avengers</Link></Button>
-          <Button color="inherit"><Link to="/villians" className="navLink">Villians</Link></Button>
+          <Button color="inherit"><Link to="/Marvel/index" className="navLink">Marvel</Link></Button>
+          <Button color="inherit"><Link to="/StarWars/index" className="navLink">Star Wars</Link></Button>
           <Button color="inherit"><Link to="/about" className="navLink">About</Link></Button>
         </Toolbar>
       </AppBar>
