@@ -63,7 +63,6 @@ class Avengers extends Component {
             } else {
                 return (
                     <React.Fragment>
-                        <Typography variant="h3">Avengers</Typography>
                         {avengReturn}
                     </React.Fragment>
                                 

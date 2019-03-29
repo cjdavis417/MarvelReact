@@ -80,7 +80,6 @@ class StarWars extends Component {
             
         return (
             <React.Fragment>
-                <Typography variant='h3'>Movies</Typography>
                 {filmElement}
             </React.Fragment>
         )

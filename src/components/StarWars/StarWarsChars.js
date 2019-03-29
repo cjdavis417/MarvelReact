@@ -67,7 +67,6 @@ class StarWarsChars extends Component {
         return (
             // Read a doc that React.Fragment or Fragment is 'best practices'.  trying it out.
             <React.Fragment>
-                <Typography variant='h3'>Characters</Typography>
                 {filmElement}
             </React.Fragment>
         )

@@ -57,7 +57,6 @@ class Villians extends Component {
         } else {
             return (
                 <React.Fragment>
-                        <Typography variant="h3">Villians</Typography>
                         {villReturn}
                     </React.Fragment>
             )
