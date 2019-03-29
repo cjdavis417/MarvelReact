@@ -17,6 +17,6 @@
     * **Star Wars API**
 
 2. Three API Calls:
-* **components/Marvel/MarvelChar.js**
-* **componenets/StarWars/StarWars.js**
-* **componenets/StarWars/StarWarsChars.js**
+    * **components/Marvel/MarvelChar.js**
+    * **componenets/StarWars/StarWars.js**
+    * **componenets/StarWars/StarWarsChars.js**
