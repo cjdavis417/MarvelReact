@@ -11,6 +11,7 @@ import Splash from './Splash';
 import Characters from './Characters';
 import Avengers from './Avengers';
 import Villians from './Villians';
+import About from './About';
 import Footer from './Footer';
 
 class App extends Component {
@@ -21,10 +22,10 @@ class App extends Component {
         <HashRouter>
           <React.Fragment>
             <ButtonAppBar />
-            <Route exact path="/" component={Splash} />
-            <Route path="/characters" component={Characters} />
+            <Route exact path="/" component={Characters} />
             <Route path="/avengers" component={Avengers} />
             <Route path="/villians" component={Villians} />
+            <Route path="/about" component={About} />
           </React.Fragment>
         </HashRouter>
         

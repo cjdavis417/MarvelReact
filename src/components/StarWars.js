@@ -4,6 +4,8 @@ import React, {Component} from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Theme from './Theme';
 
 
 class StarWars extends Component {
@@ -56,7 +58,7 @@ class StarWars extends Component {
 
     render() {
         if (!this.state.films) {
-            return (<div>loading</div>)
+            return (<CircularProgress className='progress' color='secondary' />)
         }
         
         
@@ -65,7 +67,7 @@ class StarWars extends Component {
             )
         const filmElement = finalArr.map(element => 
                 
-            <Card >
+            <Card className='card'>
                 <CardContent>
                     <Typography variant='h4'>{element.data.title}</Typography>
                     <Typography variant='h5'>Episode {this.romanize(element.data.episode_id)}</Typography>
@@ -89,4 +91,5 @@ class StarWars extends Component {
 }
 
 export default StarWars;
+
 

@@ -11,12 +11,12 @@ class Characters extends Component {
 
     render() {
         return (
-            <React.Fragment >    
+            <div className='wrapper'>    
                 <Avengers className='container' />
                 <Villians className='container' /> 
-                <StarWars className='container' />
-                <StarWarsChars className='container' />
-           </React.Fragment>
+                <StarWars className='card-container' />
+                <StarWarsChars className='card-container' />
+            </div>
         );
     }
 }

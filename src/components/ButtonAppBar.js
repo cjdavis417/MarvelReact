@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 //import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
+import Menu from '@material-ui/core/Menu';
 
 const styles = {
   root: {
@@ -29,14 +30,14 @@ function ButtonAppBar(props) {
       <AppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            {/* <MenuIcon /> */}
+            {<Menu />}
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            <Link to="/splash" className="navLink">Sci-Fi Characters</Link>
+            <Link to="" className="navLink"><span sytle='font-weight: bold;'>Sci-Fi</span> Characters</Link>
           </Typography>
-          <Button color="inherit"><Link to="/characters" className="navLink">Characters</Link></Button>
           <Button color="inherit"><Link to="/avengers" className="navLink">Avengers</Link></Button>
           <Button color="inherit"><Link to="/villians" className="navLink">Villians</Link></Button>
+          <Button color="inherit"><Link to="/about" className="navLink">About</Link></Button>
         </Toolbar>
       </AppBar>
     </div>

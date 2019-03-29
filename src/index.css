@@ -1,5 +1,5 @@
 body {
-  background: #efefef;
+  background: #5f5f5f;
 }
 
 .title {
@@ -31,17 +31,25 @@ li {
   vertical-align: top;
 }
 
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .card {
   display: inline-flex;
   margin: 5px;
- 
+  width: 300px;
 }
+
 
 .card-header {
   font-size: 25px;
@@ -80,6 +88,12 @@ img {
   height: 160px;
   background-position: -5px -5px;
 }
+
+.footer {
+  background-color: #2a2a2a;
+}
+
+
 
 .footerInfo {
   display: inline-block;

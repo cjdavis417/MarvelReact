@@ -4,7 +4,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import Modal from './Modal'
 
 
 class MarvelChar extends Component {
@@ -71,8 +70,7 @@ class MarvelChar extends Component {
                 
                 	
             </GridListTile> */}
-<a href='#' onClick={this.openModal}>Lets Go!</a>
-<Modal ref={(node) => { this.modal = node;}} />	
+
             </div>
         )
         

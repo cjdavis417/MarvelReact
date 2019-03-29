@@ -4,9 +4,10 @@ import React, {Component} from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-class StarWarsCars extends Component {
+class StarWarsChars extends Component {
     constructor (id) {
         super()
         this.id = id
@@ -46,21 +47,23 @@ class StarWarsCars extends Component {
     render() {
         // this waits for the api to finish getting data.
         if (!this.state.films) {
-            return (<div>loading</div>)
+            return (<CircularProgress className='progress' color='primary' />)
         }
         
         const finalArr = this.state.films.map(element => 
                 element
             )
         const filmElement = finalArr.map(element => 
-            // Material-UI elements    
-            <Card >
-                <CardContent>
-                    <Typography variant='h4'>Name: {element.data.name}</Typography>
-                    <Typography variant='h5'>Gender: {element.data.gender}</Typography>
-                    <Typography variant='p'>Height: {this.getHeight(element.data.height)} feet</Typography>
-                </CardContent>
-            </Card>
+            // Material-UI elements  
+            
+                <Card className='card' >
+                    <CardContent>
+                        <Typography variant='h4'>{element.data.name}</Typography>
+                        <Typography variant='h5'>Gender: {element.data.gender}</Typography>
+                        <Typography variant='p'>Height: {this.getHeight(element.data.height)} feet</Typography>
+                    </CardContent>
+                </Card>
+          
         )
             
         return (
@@ -76,5 +79,5 @@ class StarWarsCars extends Component {
 
 }
 
-export default StarWarsCars;
+export default StarWarsChars;
 
