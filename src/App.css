@@ -38,7 +38,18 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.gridList {
+  width: 80%;
+}
+
+.progress {
+  margin: 10px auto;
+  
 }
 
 .cardStyle {

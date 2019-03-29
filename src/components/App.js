@@ -5,10 +5,7 @@ import '../App.css';
 import '../index.css';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
-import pink from '@material-ui/core/colors/pink';
-import red from '@material-ui/core/colors/red';
-
+import theme from './Theme';
 import ButtonAppBar from './ButtonAppBar';
 import Splash from './Splash';
 import Characters from './Characters';
@@ -20,34 +17,23 @@ class App extends Component {
 
   render() {
     return (
+      <MuiThemeProvider theme={theme} >
+        <HashRouter>
+          <React.Fragment>
+            <ButtonAppBar />
+            <Route exact path="/" component={Splash} />
+            <Route path="/characters" component={Characters} />
+            <Route path="/avengers" component={Avengers} />
+            <Route path="/villians" component={Villians} />
+          </React.Fragment>
+        </HashRouter>
+        
+        <Footer />
       
-        <MuiThemeProvider theme={theme}>
-      <HashRouter>
-        <div>
-          <ButtonAppBar />
-          <Route exact path="/" component={Splash} />
-          <Route path="/characters" component={Characters} />
-          <Route path="/avengers" component={Avengers} />
-          <Route path="/villians" component={Villians} />
-        </div>
-      </HashRouter>
-      
-      <Footer />
-      </MuiThemeProvider>
-    
-
+    </MuiThemeProvider>
      
     );
   }
 }
 
 export default App;
-
-
-const theme = createMuiTheme({
-  palette: {
-    primary: indigo,
-    secondary: pink,
-    error: red
-  }
-})

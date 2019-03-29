@@ -1,20 +1,27 @@
 import React, {Component} from 'react';
 import MarvelChar from './MarvelChar';
 
-const Ultron = new MarvelChar('Ultron', 'Ultron');
-const Loki = new MarvelChar('Loki', 'Loki');
-const Thanos = new MarvelChar('Thanos', 'Thanos');
-const Redskull = new MarvelChar('Red Skull', 'Red Skull');
-const Kree = new MarvelChar('Kree', 'Kree');
-const Galactus = new MarvelChar('Galactus', 'Galactus');
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const GroupVillians = [Ultron, Loki, Thanos, Redskull, Kree, Galactus];
+const Ultron = new MarvelChar('Ultron', 'Ultron');
+// const Loki = new MarvelChar('Loki', 'Loki');
+// const Thanos = new MarvelChar('Thanos', 'Thanos');
+// const Redskull = new MarvelChar('Red Skull', 'Red Skull');
+// const Kree = new MarvelChar('Kree', 'Kree');
+// const Galactus = new MarvelChar('Galactus', 'Galactus');
+
+const GroupVillians = [Ultron]//[Ultron, Loki, Thanos, Redskull, Kree, Galactus];
 
 class Villians extends Component {
     constructor() {
         super()
         this.state = {
-            villians: []
+            loading: false,
+            villians: [],
+            comics: []
         }
     }
 
@@ -26,13 +33,19 @@ class Villians extends Component {
 
         Promise.all(villians2).then(moreData => {
             this.setState({
+                loading: false,
                 villians: moreData
             })
         })
     }
 
+    
+    
+
     componentDidMount() {
-        this.GetCharacter();
+        this.setState({loading: true})
+        //this.GetCharacter();
+        
     }
 
     render() {
@@ -41,10 +54,22 @@ class Villians extends Component {
             element
         )
         
-        return (
-            <div>{villReturn}</div>
-        )
-        
+        if(this.state.loading) {
+            return (
+                <CircularProgress className='progress' color='secondary' />
+            )
+        } else {
+            return (
+                <div className='container'>
+                    <GridList cellHeight={180} className='gridList'>
+                        <GridListTile key='Subheader' cols={2}  style={{height: 'auto'}}>
+                            <ListSubheader component='div'>Villians</ListSubheader>
+                        </GridListTile>
+                        {villReturn}
+                    </GridList>
+                </div>
+            )
+        }
     }
 }
 

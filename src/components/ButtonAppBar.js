@@ -32,7 +32,7 @@ function ButtonAppBar(props) {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            <Link to="/splash" className="navLink">Marvel</Link>
+            <Link to="/splash" className="navLink">Sci-Fi Characters</Link>
           </Typography>
           <Button color="inherit"><Link to="/characters" className="navLink">Characters</Link></Button>
           <Button color="inherit"><Link to="/avengers" className="navLink">Avengers</Link></Button>

@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
-import { Link } from 'react-router-dom';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import IconButton from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Modal from './Modal'
+
 
 class MarvelChar extends Component {
     constructor(id, name, shColor) {
@@ -15,12 +13,18 @@ class MarvelChar extends Component {
         this.id = id;
         this.name = name;
 
-        this.state = [];
+        this.state = {
+            open: false
+        };
+    }
+
+    openModal = (e) => {
+        e.preventDefault();
+        this.modal.open();
     }
 
     async GetCharacter() {
         var finalString = [];
-        var FinalAvengers = [];
 
         var marvelAPI = 'https://gateway.marvel.com/v1/public/characters';
         var APIkey = '509dae0442a04443238ccd706605db14';
@@ -47,37 +51,43 @@ class MarvelChar extends Component {
         
         
         var imagePath = charArray[0].path + '.' + charArray[0].extension 
+        
 
-        finalString = charArray.map((member) => //FinalAvengers.map((member) =>
-            <Grid item xs={12}>
-            
-            <Card style={cardStyle} key={member.id}>
-                <CardActionArea>
-                    <CardMedia 
-                        component="img"
-                        image={imagePath}
-                        title={member.name}
-                    />
-                </CardActionArea>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">{member.name}</Typography>
-                    <Typography component="p">{member.desc}</Typography>
-                </CardContent>
-            </Card>
-            
-            </Grid>
+        finalString = charArray.map((member) => 
+        <div>
+            {/* <GridListTile key={imagePath} className='tile'>
+                <img src={imagePath} alt={member.name} />
+                <GridListTileBar
+                title={member.name}
+                subtitle={<span>ID: {member.id}</span>}
+                actionIcon={
+                    <IconButton className=''>
+                    	<SvgIcon >
+                        <path d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm4-9.99L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                        </SvgIcon>			
+                    </IconButton>
+                    
+                }/>
+                
+                	
+            </GridListTile> */}
+<a href='#' onClick={this.openModal}>Lets Go!</a>
+<Modal ref={(node) => { this.modal = node;}} />	
+            </div>
         )
         
         return (
-            <div>{finalString}</div>
+            finalString
         )
                 
+        
+    }
+
+    async GetComics() {
+        console.log('comics func');
+
         
     }
 }
 
 export default MarvelChar;
-
-const cardStyle = {
-    width: '18rem'
-}
